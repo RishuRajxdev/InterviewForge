@@ -1,16 +1,16 @@
-# 🤖 InterviewAI
+# InterviewForge
 
 > **AI-Powered Interview Preparation Platform** — Upload your resume, target your dream job, and let AI guide you to success.
 
 ---
 
-## 🚀 Overview
+## Overview
 
 **InterviewAI** is a full-stack MERN application that leverages Generative AI to help job seekers prepare smarter and faster. Users upload their resume and a target job description — the system then analyzes skill gaps, generates personalized interview questions, creates a preparation roadmap, and even builds an AI-optimized resume tailored to the job.
 
 ---
 
-## ✨ Features
+## Features
 
 ### 📄 Resume Analysis
 - Upload your existing resume (PDF/DOCX)
@@ -47,7 +47,7 @@
 | **Backend** | Node.js, Express.js |
 | **Database** | MongoDB Atlas, Mongoose |
 | **Authentication** | JWT (JSON Web Tokens),TokenBlackListing |
-| **AI / LLM** | Google Gemini API / OpenAI GPT |
+| **AI / LLM** | Google Gemini API 3.1 flash-lite |
 | **File Handling** | Multer, pdf-parse, mammoth |
 | **State Management** | Context API / Redux |
 
