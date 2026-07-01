@@ -1,13 +1,12 @@
-/* button.scss */
 
 .primary-button {
     width: 100%;
-    padding: 0.875rem;
-    border: 1px solid #ffffff;
+    padding: 0.5rem;
+    border: 1px solid white;
     border-radius: 0.5rem;
     
-    background-color: #ffffff;
-    color: #09090b; 
+    background-color: #27272a;
+    color: white; 
     
     font-size: 1rem;
     font-weight: 600;
@@ -21,8 +20,10 @@
     transition: all 0.2s ease;
 
     &:hover {
-        background-color: #e4e4e7; 
-        border-color: #e4e4e7;
+        background-color: #27272a; 
+        color: #00BCD4;
+        border-color: #00BCD4;
+        scale: 1.02;
     }
 
     &:active {

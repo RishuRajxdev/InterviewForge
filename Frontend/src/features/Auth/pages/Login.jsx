@@ -43,9 +43,9 @@ const Login = () => {
                     </div>
                     <button className='button primary-button' >Login</button>
                 </form>
-                <p>Don't have an account? <Link to={"/register"} >Register</Link> </p>
+                <p>Don't have an account? <Link to={"/register"} className='hover:text-cyan-600' >Register</Link> </p>
             </div>
         </main>
     )
 }
-export default Login
+export default Login; 

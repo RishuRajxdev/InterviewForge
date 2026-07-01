@@ -1,8 +1,8 @@
-$bg-page: #0d1117;
-$bg-card: #161b22;
-$bg-panel: #0d1117;
+$bg-page: #060606;
+$bg-card: #1a1a1a;
+$bg-panel: #1a1a1a;
 $bg-input: #161b22;
-$border-color: #30363d;
+$border-color: #1a1a1a;
 $text-primary: #e6edf3;
 $text-muted: #8b949e;
 $accent: #ffffff;
@@ -354,6 +354,11 @@ $severity-low: #3fb950;
     align-items: center;
     gap: 0.6rem;
 
+    
+    $color-high:   #22c55e;
+    $color-mid:    #eab308; 
+    $color-low:    #ef4444;
+
     &__label {
         font-size: 0.75rem;
         font-weight: 600;
@@ -372,11 +377,11 @@ $severity-low: #3fb950;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: 4px solid $accent;
+        border: 4px solid $accent; 
 
-        &.score--high { border-color: $accent; }
-        &.score--mid { border-color: $severity-medium; }
-        &.score--low { border-color: $severity-high; }
+        &.score--high { border-color: $color-high; }
+        &.score--mid  { border-color: $color-mid; }
+        &.score--low  { border-color: $color-low; }
     }
 
     &__value {
@@ -429,7 +434,7 @@ $severity-low: #3fb950;
     border-radius: 0.4rem;
     border: 1px solid $border-color;
     cursor: default;
-
+//Based on score...
     &--high { color: $severity-high; background-color: rgba($severity-high, 0.05); }
     &--medium { color: $severity-medium; background-color: rgba($severity-medium, 0.05); }
     &--low { color: $severity-low; background-color: rgba($severity-low, 0.05); }
@@ -484,4 +489,30 @@ $severity-low: #3fb950;
 @keyframes skeleton-pulse {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
+}
+/* Add to interview.scss */
+.interview-sidebar {
+    position: relative; /* Essential to anchor the close button */
+}
+
+.sidebar-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: #737373;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    z-index: 10;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+    }
 }
