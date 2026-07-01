@@ -1,3 +1,4 @@
+@use "sass:color";
 $bg-page: #000000;
 $bg-card: #0a0a0a;
 $bg-panel: #1a1a1a;
@@ -298,7 +299,11 @@ $radius-md: 4px;
   max-width: 100%;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, $accent 0%, darken($accent, 10%) 100%);
+ background: linear-gradient(
+  135deg,
+  $accent 0%,
+  color.adjust($accent, $lightness: -10%) 100%
+);
   color: black;
   font-size: 0.9rem;
   font-weight: 600;
@@ -310,23 +315,23 @@ $radius-md: 4px;
     opacity: 0.6;
     cursor: not-allowed;
   }
-}
 
-.btn-spinner {
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.icon-spin {
   width: 14px;
   height: 14px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid rgb(105, 193, 193);
   border-top-color: $bg-page;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   flex-shrink: 0;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .recent-reports {
   display: flex;
