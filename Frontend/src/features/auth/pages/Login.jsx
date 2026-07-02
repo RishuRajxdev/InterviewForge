@@ -25,7 +25,10 @@ const Login = () => {
     return (
         <main>
             <div className="form-container">
-                <h1>Login/Sign In</h1>
+                <h1>
+                     Interview<span className='text-6xl text-cyan-600'>Forge</span>
+                </h1>
+                <h1>Login/Sign-in</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
                         <label htmlFor="identifier">Email or Username</label>

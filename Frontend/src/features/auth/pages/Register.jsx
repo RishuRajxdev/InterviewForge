@@ -29,7 +29,10 @@ const Register = () => {
     return (
         <main>
             <div className="form-container">
-                <h1>Register/Sign-Up</h1>
+            <h1>
+                     Interview<span className='text-6xl text-cyan-600'>Forge</span>
+                </h1>
+                <h1>Register/Sign-up</h1>
 
                 <form onSubmit={handleSubmit}>
 
