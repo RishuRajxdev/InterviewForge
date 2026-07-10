@@ -3,7 +3,7 @@
 > **AI-Powered Interview Preparation Platform** — Upload your resume, target your dream job, and let AI guide you to success.
 
 ---
-
+Live Demo :
 ## Overview
 
 **InterviewAI** is a full-stack MERN application that leverages Generative AI to help job seekers prepare smarter and faster. Users upload their resume and a target job description — the system then analyzes skill gaps, generates personalized interview questions, creates a preparation roadmap, and even builds an AI-optimized resume tailored to the job.
@@ -48,8 +48,8 @@
 | **Database** | MongoDB Atlas, Mongoose |
 | **Authentication** | JWT (JSON Web Tokens),TokenBlackListing |
 | **AI / LLM** | Google Gemini API 3.1 flash-lite |
-| **File Handling** | Multer, pdf-parse, mammoth |
-| **State Management** | Context API / Redux |
+| **File Handling** | Multer, unPDF,Puppeter/@chromium |
+| **State Management** | Context API |
 
 ---
 
@@ -57,7 +57,7 @@
 
 ```
 InterviewAI/
-├── client/                     # React Frontend
+├── Frontend/                     # React Frontend
 │   ├── public/
 │   └── src/
 │       ├── assets/
@@ -114,7 +114,7 @@ InterviewAI/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/RishuRajxdev/InterviewAI.git
+git clone https://github.com/RishuRajxdev/
 cd InterviewAI
 ```
 
@@ -143,7 +143,7 @@ npm run dev
 ### 3. Setup Client
 
 ```bash
-cd client
+cd Frontend
 npm install
 npm run dev
 ```
