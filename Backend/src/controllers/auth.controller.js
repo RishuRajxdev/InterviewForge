@@ -42,8 +42,12 @@ async function registerUserController(req, res) {
         { expiresIn: "1d" }
     )
 
-    res.cookie("token", token)
-
+     res.cookie("token",token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        maxAge: 24 * 60 * 60 * 1000
+    })
 
     res.status(201).json({
         message: "User registered successfully",
@@ -56,13 +60,6 @@ async function registerUserController(req, res) {
 
 }
 
-
-
-/**
- * @name loginUserController
- * @description login a user, expects username and password in the request body
- * @access Public
- */
 /**
  * @name loginUserController
  * @description login a user, expects identifier (email or username) and password in the request body
@@ -130,7 +127,11 @@ async function logoutUserController(req, res) {
         await tokenBlacklistModel.create({ token })
     }
 
-    res.clearCookie("token")
+      res.clearCookie("token", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax"
+    })
 
     res.status(200).json({
         message: "User logged out successfully"
