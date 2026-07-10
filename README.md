@@ -2,8 +2,8 @@
 
 > **AI-Powered Interview Preparation Platform** — Upload your resume, target your dream job, and let AI guide you to success.
 
----
-Live Demo :
+---f  
+
 ## Overview
 
 **InterviewAI** is a full-stack MERN application that leverages Generative AI to help job seekers prepare smarter and faster. Users upload their resume and a target job description — the system then analyzes skill gaps, generates personalized interview questions, creates a preparation roadmap, and even builds an AI-optimized resume tailored to the job.
@@ -12,34 +12,13 @@ Live Demo :
 
 ## Features
 
-### 📄 Resume Analysis
-- Upload your existing resume (PDF/DOCX)
-- AI parses and extracts skills, experience, and education
-- Instantly compared against the target job description
+- Resume upload and parsing (PDF/DOCX)
+- Skill gap analysis against a target job description
+- AI-generated technical and behavioral interview questions
+- Personalized interview prep flow
+- JWT authentication with token blacklisting
 
-### 🔍 Skill Gap Identification
-- Identifies missing technical and soft skills
-- Highlights strengths that align with the job
-- Prioritizes gaps by importance to the role
-
-### ❓ AI-Generated Interview Questions
-- **Technical Questions** — role-specific coding, system design, and domain knowledge
-- **Behavioral Questions** — STAR-method questions based on your experience and the job requirements
-- Difficulty levels: Easy → Medium → Hard
-
-### 🗺️ Personalized Preparation Plan
-- Day-by-day study roadmap tailored to your skill gaps
-- Curated resources: courses, documentation, practice problems
-- Timeline based on your target interview date
-
-### 📝 AI-Optimized Resume Generator
-- Generates a new resume tailored to the specific job description
-- Incorporates keywords from the job posting for ATS compatibility
-- Professional formatting ready to download
-
----
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -48,73 +27,98 @@ Live Demo :
 | **Database** | MongoDB Atlas, Mongoose |
 | **Authentication** | JWT (JSON Web Tokens),TokenBlackListing |
 | **AI / LLM** | Google Gemini API 3.1 flash-lite |
-| **File Handling** | Multer, unPDF,Puppeter/@chromium |
-| **State Management** | Context API |
+| **File Handling** | Multer, pdf-parse, mammoth |
+| **State Management** | Context API / Redux |
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 InterviewAI/
-├── Frontend/                     # React Frontend
+├── client/                     # React Frontend
 │   ├── public/
 │   └── src/
-│       ├── assets/
-│       ├── components/         # Reusable UI components
-│       ├── pages/
-│       │   ├── Login.jsx
-│       │   ├── Dashboard.jsx
-│       │   ├── UploadResume.jsx
-│       │   ├── SkillGaps.jsx
-│       │   ├── Questions.jsx
-│       │   ├── PrepPlan.jsx
-│       │   └── ResumeBuilder.jsx
-│       ├── utils/
-│       ├── App.jsx
-│       └── main.jsx
+│       ├── config/
+│       │   └── database.js
+│       ├── controllers/
+│       │   ├── auth.controller.js
+│       │   └── interview.controller.js
+│       ├── middlewares/
+│       │   ├── auth.middleware.js
+│       │   ├── db.middleware.js
+│       │   └── file.middleware.js
+│       ├── models/
+│       │   ├── blacklist.model.js
+│       │   ├── interviewReport.model.js
+│       │   └── user.model.js
+│       ├── routes/
+│       │   ├── auth.routes.js
+│       │   └── interview.routes.js
+│       ├── services/
+│       │   └── ai.service.js
+│       ├── app.js
+│       ├── server.js
+│       ├── .env
+│       ├── package.json
+│       └── vercel.json
 │
-├── server/                     # Node.js + Express Backend
-│   ├── config/
-│   │   ├── connectDB.js
-│   │   └── token.js
-│   ├── controllers/
-│   │   ├── auth.controller.js
-│   │   ├── resume.controller.js
-│   │   ├── analysis.controller.js
-│   │   └── user.controller.js
-│   ├── middlewares/
-│   │   └── isAuth.js
-│   ├── models/
-│   │   ├── user.model.js
-│   │   └── analysis.model.js
-│   ├── routes/
-│   │   ├── auth.route.js
-│   │   ├── resume.route.js
-│   │   └── analysis.route.js
-│   ├── services/
-│   │   └── ai.service.js       # Generative AI integration
-│   ├── .env
-│   ├── .gitignore
-│   └── index.js
+├── Frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── features/
+│   │   │   ├── auth/
+│   │   │   │   ├── components/
+│   │   │   │   │   └── Protected.jsx
+│   │   │   │   ├── hooks/
+│   │   │   │   │   └── useAuth.js
+│   │   │   │   ├── pages/
+│   │   │   │   │   ├── Login.jsx
+│   │   │   │   │   └── Register.jsx
+│   │   │   │   ├── services/
+│   │   │   │   │   └── auth.api.js
+│   │   │   │   ├── auth.context.jsx
+│   │   │   │   └── auth.form.scss
+│   │   │   └── interview/
+│   │   │       ├── hooks/
+│   │   │       │   └── useInterview.js
+│   │   │       ├── pages/
+│   │   │       │   ├── Home.jsx
+│   │   │       │   └── Interview.jsx
+│   │   │       ├── services/
+│   │   │       │   └── interview.api.js
+│   │   │       ├── style/
+│   │   │       │   ├── home.scss
+│   │   │       │   └── interview.scss
+│   │   │       └── interview.context.jsx
+│   │   ├── style/
+│   │   │   └── button.scss
+│   │   ├── App.jsx
+│   │   ├── app.routes.jsx
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   │   └── style.scss
+│   ├── index.html
+│   ├── vite.config.js
+│   ├── eslint.config.js
+│   ├── package.json
+│   └── vercel.json
 │
 └── README.md
 ```
 
----
-
-## ⚙️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
 - Node.js >= 18.x
-- MongoDB Atlas account
-- Gemini API Key (or OpenAI API Key)
+- MongoDB (local or Atlas)
+- Google Gemini API key
 
-### 1. Clone the Repository
+### Backend Setup
 
 ```bash
-git clone https://github.com/RishuRajxdev/
+git clone https://github.com/RishuRajxdev/InterviewAI.git
 cd InterviewAI
 ```
 
@@ -125,22 +129,22 @@ cd server
 npm install
 ```
 
-Create a `.env` file in the `server/` directory:
+Create a `.env` file in `Backend/`:
 
 ```env
 PORT=8000
-MONGO_URL=your_mongodb_atlas_uri
+MONGO_URL=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 GEMINI_API_KEY=your_gemini_api_key
 ```
 
-Start the server:
+Run the server:
 
 ```bash
 npm run dev
 ```
 
-### 3. Setup Client
+### Frontend Setup
 
 ```bash
 cd Frontend
@@ -148,66 +152,21 @@ npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
+App runs at `http://localhost:5173`.
 
----
-
-## 🔄 User Flow
-
-```
-1. Register / Login
-        ↓
-2. Upload Resume (PDF/DOCX)
-        ↓
-3. Enter Target Job Description
-        ↓
-4. AI Analyzes Resume vs Job
-        ↓
-   ┌────────────────────────────────────┐
-   │  • Skill Gap Report                │
-   │  • Technical Interview Questions   │
-   │  • Behavioral Interview Questions  │
-   │  • Personalized Prep Plan          │
-   │  • AI-Generated Optimized Resume   │
-   └────────────────────────────────────┘
-```
-
----
-
-## 🔐 Environment Variables
+## Environment Variables
 
 | Variable | Description |
-|----------|-------------|
-| `PORT` | Server port (default: 8000) |
-| `MONGO_URL` | MongoDB Atlas connection URI |
-| `JWT_SECRET` | Secret key for JWT signing |
-| `GEMINI_API_KEY` | Google Gemini API key for AI features |
+|---|---|
+| `PORT` | Backend server port |
+| `MONGO_URL` | MongoDB connection string |
+| `JWT_SECRET` | Secret for signing JWTs |
+| `GEMINI_API_KEY` | Gemini API key for AI features |
 
-> ⚠️ Never commit your `.env` file. It is listed in `.gitignore`.
+## Author
 
----
+**Rishu Raj** — [@RishuRajxdev](https://github.com/RishuRajxdev)
 
-## 🤝 Contributing
+## License
 
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'feat: add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-## 👨‍💻 Author
-
-**Rishu Raj**
-- GitHub: [@RishuRajxdev](https://github.com/RishuRajxdev)
-
----
-
-> Built with ❤️ using MERN Stack + Generative AI
+MIT
