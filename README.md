@@ -2,8 +2,9 @@
 
 > **AI-Powered Interview Preparation Platform** — Upload your resume, target your dream job, and let AI guide you to success.
 
----f  
+**Live Demo:** [https://interview-forge-client.vercel.app/](https://interview-forge-client.vercel.app/)
 
+---
 ## Overview
 
 **InterviewAI** is a full-stack MERN application that leverages Generative AI to help job seekers prepare smarter and faster. Users upload their resume and a target job description — the system then analyzes skill gaps, generates personalized interview questions, creates a preparation roadmap, and even builds an AI-optimized resume tailored to the job.
