@@ -153,27 +153,44 @@ Rules:
  * 
  * @description: Defining PDF format here.
  */
-async function generatePdfFromHtml(htmlContent) {
-    const puppeteer = (await import("puppeteer-core")).default
-    const chromium = (await import("@sparticuz/chromium")).default
 
-    const browser = await puppeteer.launch({
+let cachedBrowser = null;
+
+
+async function getBrowser() {
+    if (cachedBrowser) {
+        return cachedBrowser; 
+    }
+    
+    const puppeteer = (await import("puppeteer-core")).default;
+    const chromium = (await import("@sparticuz/chromium")).default;
+    
+    cachedBrowser = await puppeteer.launch({
         args: chromium.args,
         defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath(),
         headless: chromium.headless,
-    })
+    });
+    
+    return cachedBrowser;
+}
 
-    const page = await browser.newPage()
-    await page.setContent(htmlContent, { waitUntil: "networkidle0" })
+
+async function generatePdfFromHtml(htmlContent) {
+  
+    const browser = await getBrowser();
+    const page = await browser.newPage();
+
+   
+    await page.setContent(htmlContent, { waitUntil: "domcontentloaded" });
 
     const pdfBuffer = await page.pdf({
         format: "A4",
         margin: { top: "20mm", bottom: "20mm", left: "15mm", right: "15mm" },
-    })
-
-    await browser.close()
-    return pdfBuffer
+    });
+    await page.close(); 
+    
+    return pdfBuffer;
 }
 
 module.exports = { generateInterviewReport, generateResumePdf }
