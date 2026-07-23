@@ -135,17 +135,13 @@ const Interview = () => {
                             Download Resume
                         </button>
                         
-                        <button onClick={onLogout} className='button primary-button' style={{ width: '100%', backgroundColor: '#ef4444', borderColor: '#ef4444', color: '#ffffff' }}>
-                            <LogOut size={14} style={{ marginRight: "0.4rem", flexShrink: 0 }} />
-                            Back to Login
-                        </button>
                     </div>
                 </nav>
 
                 <div className='interview-divider' />
 
                 <main className='interview-content'>
-                    {/* ... (Your content sections remain the same) ... */}
+                
                     {activeNav === 'technical' && (
                         <section>
                             <div className='content-header'><h2>Technical Questions</h2><span className='content-header__count'>{report.technicalQuestions.length} questions</span></div>

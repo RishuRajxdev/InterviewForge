@@ -2,18 +2,28 @@ import React, { useState, useRef } from 'react'
 import toast from 'react-hot-toast'
 import '../style/home.scss'
 import { useInterview } from '../../interview/hooks/useInterview.js'
+import { useAuth } from '../../auth/hooks/useAuth.js'
 import { useNavigate } from 'react-router'
-import { Sparkles, Loader2 } from 'lucide-react'
+import { Sparkles, Loader2, LogOut } from 'lucide-react'
+
 
 const Home = () => {
 
     const { loading, generateReport, reports, deleteReport } = useInterview()
+    const { handleLogout } = useAuth()
     const [ jobDescription, setJobDescription ] = useState("")
     const [ selfDescription, setSelfDescription ] = useState("")
     const [ resumeFileName, setResumeFileName ] = useState("")
     const resumeInputRef = useRef()
 
     const navigate = useNavigate()
+
+    const onLogout = async () => {
+        const success = await handleLogout()
+        if (success) {
+            navigate('/login')
+        }
+    }
 
     const handleFileChange = (e) => {
         const file = e.target.files[0]
@@ -58,6 +68,8 @@ const Home = () => {
     }
 
     return (
+        <div className="w-full max-w-full min-h-screen bg-black overflow-x-hidden">
+            
         <div className='home-page min-h-screen w-full overflow-x-hidden'>
             <div className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 flex flex-col items-center'>
 
@@ -68,7 +80,31 @@ const Home = () => {
                 </header>
 
                 {/* Main Card */}
-                <div className='interview-card'>
+                <div className='interview-card' style={{ position: 'relative' }}>
+
+                    <button
+                        onClick={onLogout}
+                        className='button'
+                        style={{
+                            position: 'absolute',
+                            top: '1rem',
+                            right: '1rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.4rem',
+                            padding: '0.5rem 0.9rem',
+                            backgroundColor: '#ef4444',
+                            borderColor: '#ef4444',
+                            color: '#ffffff',
+                            borderRadius: '0.5rem',
+                            fontSize: '0.85rem',
+                            zIndex: 10,
+                        }}
+                    >
+                        <LogOut size={14} />
+                        Logout
+                    </button>
+
                     <div className='interview-card__body'>
 
                         {/* Left Panel - Job Description */}
@@ -222,6 +258,7 @@ const Home = () => {
 
             </div>
 
+        </div>
         </div>
     )
 }
